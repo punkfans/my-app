@@ -8,14 +8,21 @@ export default class Todos extends React.Component {
         super();
         this.state = {
             todos: todoStore.getAll()
-        }
+        };
+        this.getTodos = this.getTodos.bind(this);
     }
 
     componentWillMount() {
-        todoStore.on('change', () => {
-            this.setState({
-                todos: todoStore.getAll()
-            });
+        todoStore.on('change', this.getTodos);
+    }
+
+    componentWillUnmount() {
+        todoStore.removeListener('change', this.getTodos);
+    }
+
+    getTodos() {
+        this.setState({
+            todos: todoStore.getAll()
         });
     }
 
