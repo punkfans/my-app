@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Clock from './Component/Clock/Clock';
 import Form from './Component/Form/Form';
+import Todos from './Component/Todos/Todos';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         </p>
           <Clock location="Chicago" />
           <Form />
+          <Todos/>
       </div>
     );
   }
